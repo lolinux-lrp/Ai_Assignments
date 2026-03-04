@@ -1,0 +1,3 @@
+[submodule "AQI"]
+	path = AQI
+	url = https://github.com/kkmed/AQI-Checker
