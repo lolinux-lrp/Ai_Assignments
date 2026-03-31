@@ -56,14 +56,27 @@ if __name__ == "__main__":
                     vars_in_block.append((r, c))
             csp.add_constraint(SudokuConstraint(vars_in_block))
 
+    print("Solving Sudoku using CSP backtracking... This may take a moment.\n")
     solution: Dict[Tuple[int, int], int] = csp.backtracking_search()
     
     if solution is None:
-        print("No solution found.")
+        print("❌ No solution found.")
     else:
-        print("Sudoku Solution:")
+        print("✨ Sudoku Solution Found:")
+        print("╔═══════╦═══════╦═══════╗")
         for r in range(9):
-            row = []
+            row_str = "║ "
             for c in range(9):
-                row.append(str(solution[(r, c)]))
-            print(" ".join(row))
+                val = solution[(r, c)]
+                if initial_board[r][c] != 0:
+                    row_str += f"\033[1m{val}\033[0m "
+                else:
+                    row_str += f"\033[92m{val}\033[0m "
+                
+                if c % 3 == 2:
+                    row_str += "║ "
+            print(row_str.rstrip())
+            if r % 3 == 2 and r != 8:
+                print("╠═══════╬═══════╬═══════╣")
+        print("╚═══════╩═══════╩═══════╝")
+        print("\n(Bold = original clues, Green = computed values)")

@@ -50,18 +50,30 @@ if __name__ == "__main__":
     csp: CSP[str, int] = CSP(variables, domains)
     csp.add_constraint(CryptarithmeticConstraint(variables))
 
+    print("Solving TWO + TWO = FOUR using CSP... This may take a moment.\n")
     solution: Dict[str, int] = csp.backtracking_search()
     
     if solution is None:
-        print("No solution found.")
+        print("❌ No solution found.")
     else:
-        print("Cryptarithmetic Solution for TWO + TWO = FOUR:")
+        print("✨ Cryptarithmetic Solution Found:")
+        print("╔═════════════════════════════╗")
+        print("║" + "TWO + TWO = FOUR".center(29) + "║")
+        print("╠═════════════════════════════╣")
+        
         for letter in letters:
-            print(f"{letter} = {solution[letter]}")
-        print("\nEquation Check:")
+            eq = f"{letter} = {solution[letter]}"
+            print(f"║{eq.center(29)}║")
+            
+        print("╠═════════════════════════════╣")
+        print("║" + "EQUATION CHECK".center(29) + "║")
+        print("╠═════════════════════════════╣")
+        
         t_w_o = str(solution['T']) + str(solution['W']) + str(solution['O'])
         f_o_u_r = str(solution['F']) + str(solution['O']) + str(solution['U']) + str(solution['R'])
-        print(f"  {t_w_o}")
-        print(f"+ {t_w_o}")
-        print("------")
-        print(f" {f_o_u_r}")
+        
+        print("║" + f"  {t_w_o} ".center(29) + "║")
+        print("║" + f"+ {t_w_o} ".center(29) + "║")
+        print("║" + f"------".center(29) + "║")
+        print("║" + f" {f_o_u_r} ".center(29) + "║")
+        print("╚═════════════════════════════╝\n")
