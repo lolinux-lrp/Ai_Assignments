@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.env/
+
+# MacOS
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+
+# Data and generated images for Assignment 4
+assignment_4/telangana_districts.geojson
+assignment_4/telangana_colored_map.png
+
+# Generated images for Assignment 2
+assigment_2/simple_captcha_project/captcha.png
